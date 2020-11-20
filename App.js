@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
-
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
 
-import Root from './components/Views/Root'
+import ShopNavigator from './navigation/Shop/ShopNavigator'
+
+import productsReducer from './store/products/reducer'
+
+const rootReducer = combineReducers({
+	products: productsReducer
+})
+
+const store = createStore(rootReducer)
 
 let fonts = {
 	'major-regular': require('./assets/fonts/MajorMonoDisplay-Regular.ttf'),
@@ -32,9 +41,7 @@ export default function App() {
 	return (
 		(dataLoaded
 			?
-			<Root>
-
-			</Root>
+				<Provider store={store}><ShopNavigator/></Provider>
 			:
 			<AppLoading />
 		)
