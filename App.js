@@ -1,21 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+
+import Root from './components/Views/Root'
+
+let fonts = {
+	'major-regular': require('./assets/fonts/MajorMonoDisplay-Regular.ttf'),
+	'nunito-black': require('./assets/fonts/NunitoSans-Black.ttf'),
+	'nunito-bold': require('./assets/fonts/NunitoSans-Bold.ttf'),
+	'nunito-extra-bold': require('./assets/fonts/NunitoSans-ExtraBold.ttf'),
+	'nunito-italic': require('./assets/fonts/NunitoSans-Italic.ttf'),
+	'nunito-light': require('./assets/fonts/NunitoSans-Light.ttf'),
+	'nunito-regular': require('./assets/fonts/NunitoSans-Regular.ttf'),
+	'nunito-semi-bold': require('./assets/fonts/NunitoSans-SemiBold.ttf')
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	const [dataLoaded, setDataLoaded] = useState(false)
+
+	const loadFonts = async () => {
+		await Font.loadAsync(fonts)
+		setDataLoaded(true)
+	}
+
+	useEffect(() => {
+		loadFonts()
+	}, [])
+
+	return (
+		(dataLoaded
+			?
+			<Root>
+
+			</Root>
+			:
+			<AppLoading />
+		)
+	);
+}
