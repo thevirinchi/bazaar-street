@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import {Colors} from '../../constants/colors'
 
 const HeaderNavButton = props => {
-	return <HeaderButton {...props} IconComponent={Ionicons} iconSize={23} color={Colors.blackDark} />
+	return <HeaderButton {...props} IconComponent={Ionicons} iconSize={23} color={Colors.whiteLight} />
 }
 
 export default HeaderNavButton
