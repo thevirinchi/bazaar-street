@@ -5,6 +5,8 @@ import { AppLoading } from 'expo';
 
 import Root from './components/Views/Root'
 
+import ProductsNavigator from './navigation/Shop/ProductsNavigator'
+
 let fonts = {
 	'major-regular': require('./assets/fonts/MajorMonoDisplay-Regular.ttf'),
 	'nunito-black': require('./assets/fonts/NunitoSans-Black.ttf'),
@@ -32,9 +34,7 @@ export default function App() {
 	return (
 		(dataLoaded
 			?
-			<Root>
-
-			</Root>
+				<ProductsNavigator/>
 			:
 			<AppLoading />
 		)
