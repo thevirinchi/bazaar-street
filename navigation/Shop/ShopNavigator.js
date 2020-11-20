@@ -17,7 +17,7 @@ const ShopNavigator = createStackNavigator({
 		headerStyle: {
 			backgroundColor: Colors.primary
 		},
-		headerTintColor: Colors.blackDark
+		headerTintColor: Colors.whiteLight
 	}
 })
 
