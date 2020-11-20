@@ -2,6 +2,8 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
+import Root from '../../components/Views/Root'
+
 import Product from '../../components/Product/Product'
 
 import PRODUCTS from '../../data/data'
@@ -28,9 +30,9 @@ const Products = props => {
 	}
 
 	return (
-		<View style={{flex: 1, width: "100%"}}>
+		<Root>
 			<FlatList numColumns={2} renderItem={renderProduct} data={PRODUCTS} backgroundColor={Colors.whiteLight} width={"100%"} />
-		</View>
+		</Root>
 	)
 }
 
