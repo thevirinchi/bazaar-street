@@ -1,4 +1,5 @@
 export const Margin = {
+	xs: 4,
 	s: 8,
 	m: 12,
 	l: 20
@@ -11,8 +12,8 @@ export const Padding = {
 }
 
 export const FontSize = {
-	xs: 16,
-	s: 18,
+	xs: 14,
+	s: 16,
 	m: 20,
 	l: 24
 }
