@@ -30,7 +30,7 @@ const Product = props => {
 const styles = StyleSheet.create({
 	container: { flex: 1, justifyContent: "center", elevation: 4, margin: Margin.l, backgroundColor: Colors.whiteLight, borderRadius: 8, overflow: "hidden"},
 	imageContainer: { width: "100%", alignItems: "center" },
-	image: { width: "100%", height: 200 },
+	image: { width: "100%", height: 300 },
 	detailsContainer: {flex: 1, width: "100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: Padding.xl, marginVertical: Margin.m},
 	buttonContainer: { flex: 1, width: "100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: Padding.xl, marginBottom: Margin.l },
 })
