@@ -41,9 +41,7 @@ const Products = props => {
 	}
 
 	return (
-		<Root>
-			<FlatList numColumns={2} renderItem={renderProduct} data={products} keyExtractor={item => item.id} backgroundColor={Colors.whiteLight} width={"100%"} />
-		</Root>
+			<FlatList numColumns={1} renderItem={renderProduct} data={products} keyExtractor={item => item.id} backgroundColor={Colors.whiteLight} width={"100%"} />
 	)
 }
 
