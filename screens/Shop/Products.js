@@ -8,18 +8,23 @@ import Product from '../../components/Product/Product'
 
 import PRODUCTS from '../../data/data'
 
-import {Colors} from '../../constants/colors'
+import { Colors } from '../../constants/colors'
 
 const Products = props => {
 
-	const onProductPress = id => {
+	const onAddHandler = id => {
+		console.log(id)
+	}
+
+	const onOpenHandler = id => {
 		console.log(id)
 	}
 
 	const renderProduct = itemData => {
 		return (
 			<Product
-				onPressHandler={onProductPress}
+				onOpenHandler={onOpenHandler}
+				onAddHandler={onAddHandler}
 				id={itemData.item.id}
 				uid={itemData.item.uid}
 				name={itemData.item.name}
