@@ -15,7 +15,7 @@ const Root = props => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: Colors.white,
+		backgroundColor: Colors.whiteLight,
 		alignItems: 'flex-start',
 		justifyContent: 'flex-start',
 		paddingVertical: Padding.m,
