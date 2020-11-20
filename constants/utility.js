@@ -8,7 +8,8 @@ export const Margin = {
 export const Padding = {
 	s: 4,
 	m: 8,
-	l: 16
+	l: 16,
+	xl: 24
 }
 
 export const FontSize = {
