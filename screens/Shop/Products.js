@@ -1,6 +1,10 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import {HeaderButtons, Item} from 'react-navigation-header-buttons'
+import {useSelector} from 'react-redux'
+
+import HeaderNavButton from '../../components/Header/Button'
 
 import Root from '../../components/Views/Root'
 
@@ -11,6 +15,8 @@ import PRODUCTS from '../../data/data'
 import { Colors } from '../../constants/colors'
 
 const Products = props => {
+
+	const products = useSelector(state => state.products.availableProds)
 
 	const onAddHandler = id => {
 		console.log(id)
@@ -36,9 +42,16 @@ const Products = props => {
 
 	return (
 		<Root>
-			<FlatList numColumns={2} renderItem={renderProduct} data={PRODUCTS} backgroundColor={Colors.whiteLight} width={"100%"} />
+			<FlatList numColumns={2} renderItem={renderProduct} data={products} keyExtractor={item => item.id} backgroundColor={Colors.whiteLight} width={"100%"} />
 		</Root>
 	)
+}
+
+Products.navigationOptions = navData => {
+	return {
+		headerLeft: ()=> <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-menu' onPress={()=>{console.log("drawer")}}/></HeaderButtons>,
+		headerRight: ()=> <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-cart' onPress={()=>{console.log("cart")}}/></HeaderButtons>
+	}
 }
 
 export default Products
