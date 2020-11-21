@@ -10,8 +10,6 @@ import { Colors } from '../../constants/colors'
 
 const Cart = props => {
 
-	console.log(useSelector(state => state.cart.items))
-
 	const cartItems = useSelector(state => {
 		const transformedCartItem = []
 		for (const key in state.cart.items){
@@ -32,7 +30,7 @@ const Cart = props => {
 				onOpenHandler={()=> console.log("Opening")}
 				onAddHandler={()=> console.log("Adding")}
 				id={itemData.item.id}
-				name={itemData.item.name}
+				quantity={itemData.item.quantity}
 				price={itemData.item.sum}
 			/>
 		)
