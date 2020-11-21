@@ -5,26 +5,41 @@ import { Colors } from '../../constants/colors'
 import { Margin, Padding } from '../../constants/utility'
 import Heading from '../../components/Typo/Heading'
 import Body from '../../components/Typo/Body'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Ionicons } from '@expo/vector-icons'
 
 const CartItem = props => {
 
 	const product = useSelector(state => state.products.availableProds.find(prod => prod.id === props.id))
 
 	return (
-		<View style={{ flexDirection: "row", flex: 1 , backgroundColor: Colors.whiteLight, elevation: 4, margin: Margin.s, borderRadius: 8, overflow: "hidden", alignItems:"center", justifyContent: "space-between"}}>
-			<Image source={{ uri: product.imageURL }} style={{ width: Dimensions.get("window").width / 5, height: Dimensions.get("window").height / 8, borderColor: Colors.white, borderWidth: 2, borderRadius: 8, marginRight: Margin.l }} />
-			<View style={{justifyContent: "space-evenly", height: "100%"}}>
-				<Heading lvl={2} text={product.name} style={{marginVertical: 0}}/>
-				<Body lvl={1} text={"Quantity: " + props.quantity} style={{marginVertical: 0}}/>
+		<View style={styles.itemContainer}>
+			<View style={styles.detailsContainer}>
+				<Image source={{ uri: product.imageURL }} style={styles.image} />
+				<View style={styles.specificsContainer}>
+					<Heading lvl={3} text={product.name} style={styles.name} />
+					<Body lvl={1} text={"Quantity: " + props.quantity} style={styles.quantity} />
+					<View style={styles.priceContainer}><Body lvl={1} text="Total: " style={styles.priceHeader} /><Body lvl={4} text={"₹" + props.price.toFixed(2)} style={styles.priceAmount} /></View>
+				</View>
 			</View>
-			<View style={{justifyContent: "space-evenly", height: "100%", alignItems: "center", paddingRight: Padding.l}}>
-				<Heading lvl={3} text="Total" style={{marginVertical: 0}}/>
-				<Body lvl={4} text={"₹" + product.price} style={{ fontSize: 18, backgroundColor: Colors.secondary }} />
-			</View>
+			<TouchableOpacity style={styles.deleteContainer}>
+				<Ionicons name="ios-trash" size={24} color={Colors.secondary} />
+			</TouchableOpacity>
 		</View>
 	)
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+	itemContainer: { flexDirection: "row", flex: 1, backgroundColor: Colors.whiteLight, elevation: 4, margin: Margin.s, borderRadius: 8, overflow: "hidden", alignItems: "center", justifyContent: "space-between" },
+	detailsContainer: { height: "100%", flexDirection: "row" },
+	image: { width: Dimensions.get("window").width / 5, height: Dimensions.get("window").height / 8, borderColor: Colors.white, borderWidth: 2, borderRadius: 8, marginRight: Margin.l },
+	specificsContainer: { justifyContent: "space-evenly", height: "100%" },
+	name: { marginVertical: 0, color: Colors.primary, fontSize: 18 },
+	quantity: { marginVertical: 0 },
+	priceContainer: { flexDirection: "row", alignItems: "center", justifyContent: "center" },
+	priceHeader: { marginVertical: 0 },
+	priceAmount: { fontSize: 16, marginVertical: 0 },
+	deleteContainer: { justifyContent: "space-evenly", height: "100%", alignItems: "center", paddingRight: Padding.xl }
+})
 
 export default CartItem
