@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import {Colors} from '../../constants/colors';
 import {FontSize, Padding, Margin} from '../../constants/utility'
 
-const Heading = props => {
+const Body = props => {
 
 	const text = () => {
 		switch (props.lvl) {
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
 	b4: { fontFamily: 'major-regular', fontSize: FontSize.s, color: Colors.black,marginVertical: Margin.xs, letterSpacing: -2, textTransform:"uppercase" }
 })
 
-export default Heading
+export default Body
