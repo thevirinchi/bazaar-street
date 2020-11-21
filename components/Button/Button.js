@@ -10,16 +10,16 @@ const Button = props => {
 	const button = () => {
 		switch (props.lvl) {
 			case 1:
-				return <View style={{ ...styles.buttonPrimary }}><Body lvl={3} text={props.text} style={{color: Colors.whiteLight}}/></View>
+				return <View style={{ ...styles.buttonPrimary, ...props.style }}><Body lvl={3} text={props.text} style={{color: Colors.whiteLight}}/></View>
 			case 2:
-				return <View style={{ ...styles.buttonSecondary }}><Body lvl={3} text={props.text} style={{color: Colors.primary}}/></View>
+				return <View style={{ ...styles.buttonSecondary, ...props.style }}><Body lvl={3} text={props.text} style={{color: Colors.primary}}/></View>
 			default:
 				break;
 		}
 	}
 
 	return (
-		<View>{ button() }</View>
+		<View style={{...props.containerStyle}}>{ button() }</View>
 	)
 }
 
