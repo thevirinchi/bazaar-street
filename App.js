@@ -41,7 +41,7 @@ export default function App() {
 	return (
 		(dataLoaded
 			?
-				<Provider store={store}><ShopNavigator/></Provider>
+			<Provider store={store}><ShopNavigator /></Provider>
 			:
 			<AppLoading />
 		)
