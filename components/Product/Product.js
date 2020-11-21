@@ -10,7 +10,7 @@ import { Margin, Padding } from '../../constants/utility'
 const Product = props => {
 	return (
 		<View style={{ ...styles.container }}>
-			<View style={{ ...styles.imageContainer }} onPress={() => { props.onOpenHandler(props.id) }}><Image source={{ uri: props.imageUrl }} style={{ ...styles.image }} /></View>
+			<View style={{ ...styles.imageContainer }} onPress={() => { props.onOpenHandler() }}><Image source={{ uri: props.imageUrl }} style={{ ...styles.image }} /></View>
 			<View style={{...styles.detailsContainer}}>
 				<Body lvl={1} text={props.name} style={{ marginVertical: 0 }} />
 				<Body lvl={4} text={"₹" + props.price} style={{backgroundColor: Colors.secondary, paddingHorizontal: Padding.s}} />
@@ -19,7 +19,7 @@ const Product = props => {
 				<TouchableOpacity onPress={() => { props.onAddHandler(props.id) }}>
 					<Button lvl={1} text="Add to cart"/>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => { props.onOpenHandler(props.id) }}>
+				<TouchableOpacity onPress={() => { props.onOpenHandler() }}>
 					<Button lvl={2} text="View Details"/>
 				</TouchableOpacity>
 			</View>
