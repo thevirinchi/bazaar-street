@@ -26,7 +26,9 @@ const Cart = props => {
 				sum: state.cart.items[key].sum
 			})
 		}
-		return transformedCartItem
+		return transformedCartItem.sort((a, b) =>
+			a.sum > b.sum ? -1 : 1
+		)
 	})
 
 	const renderProduct = itemData => {
