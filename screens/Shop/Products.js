@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
-import {HeaderButtons, Item} from 'react-navigation-header-buttons'
-import {useSelector} from 'react-redux'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { useSelector } from 'react-redux'
 
 import HeaderNavButton from '../../components/Header/Button'
 
@@ -20,7 +20,7 @@ const Products = props => {
 	const renderProduct = itemData => {
 		return (
 			<Product
-				onOpenHandler={()=>{props.navigation.navigate('ProductDetails', {productId: itemData.item.id, title: itemData.item.name})}}
+				onOpenHandler={() => { props.navigation.navigate('ProductDetails', { productId: itemData.item.id, title: itemData.item.name }) }}
 				onAddHandler={onAddHandler}
 				id={itemData.item.id}
 				uid={itemData.item.uid}
@@ -32,14 +32,14 @@ const Products = props => {
 	}
 
 	return (
-			<FlatList numColumns={1} renderItem={renderProduct} data={products} keyExtractor={item => item.id} backgroundColor={Colors.whiteLight} width={"100%"} />
+		<FlatList numColumns={1} renderItem={renderProduct} data={products} keyExtractor={item => item.id} backgroundColor={Colors.whiteLight} width={"100%"} />
 	)
 }
 
 Products.navigationOptions = navData => {
 	return {
-		headerLeft: ()=> <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-menu' onPress={()=>{console.log("drawer")}}/></HeaderButtons>,
-		headerRight: ()=> <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-cart' onPress={()=>{console.log("cart")}}/></HeaderButtons>
+		headerLeft: () => <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-menu' onPress={() => { console.log("drawer") }} /></HeaderButtons>,
+		headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-cart' onPress={() => { console.log("cart") }} /></HeaderButtons>
 	}
 }
 

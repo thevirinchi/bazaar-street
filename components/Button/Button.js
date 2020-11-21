@@ -1,25 +1,25 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 import Body from '../Typo/Body'
 
-import {Colors} from '../../constants/colors'
+import { Colors } from '../../constants/colors'
 
 const Button = props => {
 
 	const button = () => {
 		switch (props.lvl) {
 			case 1:
-				return <View style={{ ...styles.buttonPrimary, ...props.style }}><Body lvl={3} text={props.text} style={{color: Colors.whiteLight}}/></View>
+				return <View style={{ ...styles.buttonPrimary, ...props.style }}><Body lvl={3} text={props.text} style={{ color: Colors.whiteLight }} /></View>
 			case 2:
-				return <View style={{ ...styles.buttonSecondary, ...props.style }}><Body lvl={3} text={props.text} style={{color: Colors.primary}}/></View>
+				return <View style={{ ...styles.buttonSecondary, ...props.style }}><Body lvl={3} text={props.text} style={{ color: Colors.primary }} /></View>
 			default:
 				break;
 		}
 	}
 
 	return (
-		<View style={{...props.containerStyle}}>{ button() }</View>
+		<View style={{ ...props.containerStyle }}>{button()}</View>
 	)
 }
 

@@ -1,27 +1,27 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import {Colors} from '../../constants/colors';
-import {FontSize, Padding, Margin} from '../../constants/utility'
+import { Colors } from '../../constants/colors';
+import { FontSize, Padding, Margin } from '../../constants/utility'
 
 const Heading = props => {
 
 	const text = () => {
 		switch (props.lvl) {
 			case 1:
-				return <Text style={{...styles.h1, ...props.style}}>{props.text}</Text>
+				return <Text style={{ ...styles.h1, ...props.style }}>{props.text}</Text>
 			case 2:
-				return <Text style={{...styles.h2, ...props.style}}>{props.text}</Text>
+				return <Text style={{ ...styles.h2, ...props.style }}>{props.text}</Text>
 			case 3:
-				return <Text style={{...styles.h3, ...props.style}}>{props.text}</Text>
+				return <Text style={{ ...styles.h3, ...props.style }}>{props.text}</Text>
 			default:
 				break;
 		}
 	}
 
 	return (
-		<View style={{...props.containerStyle}}>
-			{ text() }
+		<View style={{ ...props.containerStyle }}>
+			{ text()}
 		</View>
 	)
 }
