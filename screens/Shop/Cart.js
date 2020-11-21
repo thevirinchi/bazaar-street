@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Dimensions } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import CartItem from '../../components/CartItem/CartItem'
+import Body from '../../components/Typo/Body'
+import Button from '../../components/Button/Button'
 
 import { Colors } from '../../constants/colors'
+import { Padding } from '../../constants/utility'
 
 const Cart = props => {
 
+	const total = useSelector(state => state.cart.totalAmount)
+
 	const cartItems = useSelector(state => {
 		const transformedCartItem = []
-		for (const key in state.cart.items){
+		for (const key in state.cart.items) {
 			transformedCartItem.push({
 				id: key,
 				name: state.cart.items[key].title,
@@ -27,8 +32,8 @@ const Cart = props => {
 	const renderProduct = itemData => {
 		return (
 			<CartItem
-				onOpenHandler={()=> console.log("Opening")}
-				onAddHandler={()=> console.log("Adding")}
+				onOpenHandler={() => console.log("Opening")}
+				onAddHandler={() => console.log("Adding")}
 				id={itemData.item.id}
 				quantity={itemData.item.quantity}
 				price={itemData.item.sum}
@@ -37,12 +42,32 @@ const Cart = props => {
 	}
 
 	return (
-		<FlatList numColumns={1} renderItem={renderProduct} data={cartItems} backgroundColor={Colors.whiteLight} width={"100%"} />
+		(cartItems.length < 1
+			?
+			<View style={styles.emptyContainer}>
+				<Body lvl={1} text="Its so empty here. Add items to your cart to checkout." />
+			</View>
+			:
+			<View style={styles.cartContainer}>
+				<View style={{ flex: 1, width: "100%", marginBottom: Dimensions.get("window").height / 15 }}>
+					<FlatList numColumns={1} renderItem={renderProduct} data={cartItems} backgroundColor={Colors.whiteLight} width={"100%"} />
+				</View>
+				<View style={styles.ctaContainer}>
+					<View style={styles.totalContainer}><Body lvl={1} text="Total: " style={styles.totalHeader} /><Body lvl={4} text={"₹" + total.toFixed(2)} style={styles.totalAmount} /></View>
+					<Button lvl={2} text="Order now" />
+				</View>
+			</View>
+		)
 	)
 }
 
 const styles = StyleSheet.create({
-
+	emptyContainer: { flex: 1, alignItems: "center", justifyContent: "center" },
+	cartContainer: { flex: 1 },
+	ctaContainer: { height: Dimensions.get("window").height / 15, flexDirection: "row", width: "100%", backgroundColor: Colors.primary, elevation: 4, position: "absolute", bottom: 0, paddingHorizontal: Padding.l, paddingVertical: Padding.m, alignItems: "center", justifyContent: "space-between" },
+	totalContainer: { flexDirection: "row", alignItems: "flex-start", justifyContent: "center" },
+	totalHeader: { color: Colors.whiteLight },
+	totalAmount: { fontSize: 18, color: Colors.whiteLight }
 })
 
 export default Cart;
