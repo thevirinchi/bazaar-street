@@ -1,16 +1,11 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import {useSelector} from 'react-redux'
 
 import HeaderNavButton from '../../components/Header/Button'
 
-import Root from '../../components/Views/Root'
-
 import Product from '../../components/Product/Product'
-
-import PRODUCTS from '../../data/data'
 
 import { Colors } from '../../constants/colors'
 
@@ -22,14 +17,10 @@ const Products = props => {
 		console.log(id)
 	}
 
-	const onOpenHandler = id => {
-		console.log(id)
-	}
-
 	const renderProduct = itemData => {
 		return (
 			<Product
-				onOpenHandler={onOpenHandler}
+				onOpenHandler={()=>{props.navigation.navigate('ProductDetails', {productId: itemData.item.id, title: itemData.item.name})}}
 				onAddHandler={onAddHandler}
 				id={itemData.item.id}
 				uid={itemData.item.uid}
