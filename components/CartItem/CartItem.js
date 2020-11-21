@@ -8,8 +8,6 @@ import Body from '../../components/Typo/Body'
 
 const CartItem = props => {
 
-	console.log(props.price, props.quantity)
-
 	const product = useSelector(state => state.products.availableProds.find(prod => prod.id === props.id))
 
 	return (

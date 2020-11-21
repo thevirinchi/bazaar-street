@@ -20,8 +20,6 @@ const ProductDetails = props => {
 	const id = props.navigation.getParam('productId')
 	const product = useSelector(state => state.products.availableProds.find(prod => prod.id === id))
 
-	useEffect(() => { console.log(props.navigation.getParam('title')) })
-
 	return (
 		<Root>
 			<Image source={{ uri: product.imageURL }} style={{ width: "100%", height: (Dimensions.get("window").height / 2), borderColor: Colors.white, borderWidth: 4, borderRadius: 8 }} />
