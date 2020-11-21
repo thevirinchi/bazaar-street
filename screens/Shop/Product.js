@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, Dimensions } from 'react-native'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Body from '../../components/Typo/Body'
 import Heading from '../../components/Typo/Heading'
 import Root from '../../components/Views/Root'
@@ -9,14 +9,16 @@ import { Colors } from '../../constants/colors'
 import { Margin, Padding } from '../../constants/utility'
 import Button from '../../components/Button/Button'
 
-import PRODUCTS from '../../data/data'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+
+import * as cartActions from '../../store/actions/cart'
 
 const ProductDetails = props => {
 
+	const dispatch = useDispatch()
+
 	const id = props.navigation.getParam('productId')
 	const product = useSelector(state => state.products.availableProds.find(prod => prod.id === id))
-
-	useEffect(() => { console.log(props.navigation.getParam('title')) })
 
 	return (
 		<Root>
@@ -30,8 +32,12 @@ const ProductDetails = props => {
 				<Body lvl={1} text={product.desc} style={{ marginBottom: 0 }} />
 			</View>
 			<View style={{ width: "100%", alignItems: "center", justifyContent: "center", marginTop: Margin.l }}>
-				<Button lvl={2} text="Add to cart" containerStyle={{ width: "80%", marginBottom: Margin.m }} style={{ borderRadius: 4 }} />
-				<Button lvl={1} text="Buy now" containerStyle={{ width: "80%" }} style={{ borderRadius: 4 }} />
+				<TouchableOpacity onPress={()=>{ dispatch(cartActions.addToCart(product)) }}>
+					<Button lvl={2} text="Add to cart" containerStyle={{ width: "80%", marginBottom: Margin.m }} style={{ borderRadius: 4 }} onPress/>
+				</TouchableOpacity>
+				<TouchableOpacity>
+					<Button lvl={1} text="Buy now" containerStyle={{ width: "80%" }} style={{ borderRadius: 4 }} />
+				</TouchableOpacity>
 			</View>
 		</Root>
 	)

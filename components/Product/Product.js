@@ -16,7 +16,7 @@ const Product = props => {
 				<Body lvl={4} text={"₹" + props.price} style={{ backgroundColor: Colors.secondary, paddingHorizontal: Padding.s }} />
 			</View>
 			<View style={{ ...styles.buttonContainer }}>
-				<TouchableOpacity onPress={() => { props.onAddHandler(props.id) }}>
+				<TouchableOpacity onPress={() => { props.onAddHandler() }}>
 					<Button lvl={1} text="Add to cart" />
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => { props.onOpenHandler() }}>

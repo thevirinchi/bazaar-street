@@ -8,11 +8,13 @@ import { createAppContainer } from 'react-navigation'
 
 import Products from '../../screens/Shop/Products'
 import ProductDetails from '../../screens/Shop/Product'
+import Cart from '../../screens/Shop/Cart'
 import { Colors } from '../../constants/colors';
 
 const ShopNavigator = createStackNavigator({
 	Products: Products,
-	ProductDetails: ProductDetails
+	ProductDetails: ProductDetails,
+	Cart: Cart
 }, {
 	defaultNavigationOptions: {
 		headerStyle: {
