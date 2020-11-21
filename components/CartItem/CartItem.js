@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
 import { View, Image, Text, StyleSheet, Dimensions } from 'react-native'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Colors } from '../../constants/colors'
 import { Margin, Padding } from '../../constants/utility'
 import Heading from '../../components/Typo/Heading'
 import Body from '../../components/Typo/Body'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
+import * as cartActions from '../../store/actions/cart'
 
 const CartItem = props => {
+
+	const dispatch = useDispatch()
 
 	const product = useSelector(state => state.products.availableProds.find(prod => prod.id === props.id))
 
@@ -22,7 +25,7 @@ const CartItem = props => {
 					<View style={styles.priceContainer}><Body lvl={1} text="Total: " style={styles.priceHeader} /><Body lvl={4} text={"₹" + props.price.toFixed(2)} style={styles.priceAmount} /></View>
 				</View>
 			</View>
-			<TouchableOpacity style={styles.deleteContainer}>
+			<TouchableOpacity style={styles.deleteContainer} onPress={() => { dispatch(cartActions.removeFromCart(product.id)) }}>
 				<Ionicons name="ios-trash" size={24} color={Colors.secondary} />
 			</TouchableOpacity>
 		</View>
