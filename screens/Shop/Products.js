@@ -21,7 +21,7 @@ const Products = props => {
 		return (
 			<Product
 				onOpenHandler={() => { props.navigation.navigate('ProductDetails', { productId: itemData.item.id, title: itemData.item.name }) }}
-				onAddHandler={() => { console.log("Clicked"); dispatch(cartActions.addToCart(itemData.item)) }}
+				onAddHandler={() => { dispatch(cartActions.addToCart(itemData.item)) }}
 				id={itemData.item.id}
 				uid={itemData.item.uid}
 				name={itemData.item.name}
