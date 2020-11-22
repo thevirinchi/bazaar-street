@@ -9,7 +9,6 @@ class Order {
 	}
 
 	get stringDate() {
-		console.log("formating")
 		return Moment(this.date).format('Do MMMM YYYY, hh:mm')
 	}
 }

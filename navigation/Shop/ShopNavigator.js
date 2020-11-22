@@ -10,6 +10,8 @@ import Products from '../../screens/Shop/Products'
 import ProductDetails from '../../screens/Shop/Product'
 import Cart from '../../screens/Shop/Cart'
 import Orders from '../../screens/Shop/Orders'
+import UserProducts from '../../screens/User/UserProducts'
+import EditProduct from '../../screens/User/EditProduct'
 
 import { Colors } from '../../constants/colors';
 
@@ -45,9 +47,26 @@ const OrdersNavigator = createStackNavigator({
 	}
 })
 
+const UserNavigator = createStackNavigator({
+	UserProducts: UserProducts,
+	EditProduct: EditProduct
+}, {
+	navigationOptions: {
+		drawerIcon: drawerConfig => <Ionicons name="ios-create" size={23} color={drawerConfig.tintColor} />
+	},
+	defaultNavigationOptions: {
+		headerStyle: {
+			backgroundColor: Colors.primary
+		},
+		headerTintColor: Colors.whiteLight
+	}
+})
+
+
 const DrawerNavigator = createDrawerNavigator({
 	Products: ShopNavigator,
-	Orders: OrdersNavigator
+	Orders: OrdersNavigator,
+	User: UserNavigator
 })
 
 export default createAppContainer(DrawerNavigator)

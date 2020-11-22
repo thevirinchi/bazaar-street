@@ -27,6 +27,7 @@ const Products = props => {
 				name={itemData.item.name}
 				price={itemData.item.price}
 				imageUrl={itemData.item.imageURL}
+				editable={false}
 			/>
 		)
 	}

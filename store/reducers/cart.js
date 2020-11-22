@@ -2,6 +2,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/cart'
 import { ADD_ORDER } from '../actions/orders'
 import CartItem from '../../models/CartItem'
 import { add } from 'react-native-reanimated'
+import { DELETE_PRODUCT } from '../actions/product'
 
 const initState = {
 	items: {},
@@ -61,6 +62,16 @@ const cartReducer = (state = initState, actions) => {
 			}
 		case ADD_ORDER:
 			return initState
+		case DELETE_PRODUCT:
+			if (!state.items[actions.pid]) return state
+			const currentItems = { ...state.items }
+			const itemTotal = state.items[actions.pid].price
+			delete currentItems[actions.pid]
+			return {
+				...state,
+				items: currentItems,
+				totalAmount: state.totalAmount - itemTotal
+			}
 		default:
 			break;
 	}
