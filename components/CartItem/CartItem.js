@@ -25,21 +25,21 @@ const CartItem = props => {
 					<View style={styles.priceContainer}><Body lvl={1} text="Total: " style={styles.priceHeader} /><Body lvl={4} text={"₹" + props.price.toFixed(2)} style={styles.priceAmount} /></View>
 				</View>
 			</View>
-			
+
 			{props.editable
-				? 
-					<TouchableOpacity style={styles.deleteContainer} onPress={() => { dispatch(cartActions.removeFromCart(product.id)) }}>
-						<Ionicons name="ios-trash" size={24} color={Colors.secondary} />
-					</TouchableOpacity>
+				?
+				<TouchableOpacity style={styles.deleteContainer} onPress={() => { dispatch(cartActions.removeFromCart(product.id)) }}>
+					<Ionicons name="ios-trash" size={24} color={Colors.secondary} />
+				</TouchableOpacity>
 				:
-					<View></View>
+				<View></View>
 			}
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
-	itemContainer: { flexDirection: "row", flex: 1, backgroundColor: Colors.whiteLight, elevation: 4, margin: Margin.s, borderRadius: 8, overflow: "hidden", alignItems: "center", justifyContent: "space-between" },
+	itemContainer: { flexDirection: "row", flex: 1, backgroundColor: Colors.whiteLight, elevation: 4, shadowColor: Colors.black, shadowOpacity: 0.25, shadowOffset: { width: 0, height: 4 }, shadowRadius: 8, margin: Margin.s, borderRadius: 8, overflow: "hidden", alignItems: "center", justifyContent: "space-between" },
 	detailsContainer: { height: "100%", flexDirection: "row" },
 	image: { width: Dimensions.get("window").width / 5, height: Dimensions.get("window").height / 8, borderColor: Colors.white, borderWidth: 2, borderRadius: 8, marginRight: Margin.l },
 	specificsContainer: { justifyContent: "space-evenly", height: "100%" },
