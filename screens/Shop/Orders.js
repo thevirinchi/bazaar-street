@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { useSelector } from 'react-redux'
@@ -15,29 +15,26 @@ const Orders = props => {
 
 	const orders = useSelector(state => state.orders.orders)
 
-	console.log(orders)
-
 	const renderItem = itemData => {
-		console.log(itemData)
 		return (
 			<OrderItem
-				id = {itemData.item.id}
-				date = {itemData.item.stringDate}
-				amount = {itemData.item.amount}
-				items = {itemData.item.items}
+				id={itemData.item.id}
+				date={itemData.item.stringDate}
+				amount={itemData.item.amount}
+				items={itemData.item.items}
 			/>
 		)
 	}
 
 	return (
-		(orders.length!==0
+		(orders.length !== 0
 			?
-				<FlatList numColumns={1} data={orders} keyExtractor={item => item.id} renderItem={renderItem}/>
+			<FlatList numColumns={1} data={orders} keyExtractor={item => item.id} renderItem={renderItem} />
 			:
-				<View style={styles.emptyContainer}>
-					<Body lvl={1} text="You have not bought something till now. Your orders will appear here." />
-				</View>
-		)	
+			<View style={styles.emptyContainer}>
+				<Body lvl={1} text="You have not bought something till now. Your orders will appear here." />
+			</View>
+		)
 	)
 }
 

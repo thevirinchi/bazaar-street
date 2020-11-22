@@ -9,8 +9,6 @@ import CartItem from '../../components/CartItem/CartItem'
 
 const OrderItem = props => {
 
-	useEffect(() => { console.log(props) })
-
 	const [showDetails, toggleShowDetails] = useState(false)
 
 	const renderProduct = itemData => {

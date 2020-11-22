@@ -38,8 +38,6 @@ const Cart = props => {
 	const renderProduct = itemData => {
 		return (
 			<CartItem
-				onOpenHandler={() => console.log("Opening")}
-				onAddHandler={() => console.log("Adding")}
 				id={itemData.item.id}
 				quantity={itemData.item.quantity}
 				price={itemData.item.sum}
