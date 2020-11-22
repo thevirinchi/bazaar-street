@@ -24,8 +24,8 @@ const Button = props => {
 }
 
 const styles = StyleSheet.create({
-	buttonPrimary: { backgroundColor: Colors.primary, borderColor: Colors.primary, borderRadius: 25, borderWidth: 1.5, minWidth: "40%", justifyContent: "center", alignItems: "center", elevation: 1 },
-	buttonSecondary: { backgroundColor: Colors.whiteLight, borderColor: Colors.primary, borderRadius: 25, borderWidth: 1.5, minWidth: "40%", justifyContent: "center", alignItems: "center", elevation: 1 },
+	buttonPrimary: { backgroundColor: Colors.primary, borderColor: Colors.primary, borderRadius: 25, borderWidth: 1.5, minWidth: "40%", justifyContent: "center", alignItems: "center", elevation: 1, shadowColor: Colors.black, shadowOpacity: 0.25, shadowOffset: { width: 0, height: 2 }, shadowRadius: 8 },
+	buttonSecondary: { backgroundColor: Colors.whiteLight, borderColor: Colors.primary, borderRadius: 25, borderWidth: 1.5, minWidth: "40%", justifyContent: "center", alignItems: "center", elevation: 1, shadowColor: Colors.black, shadowOpacity: 0.25, shadowOffset: { width: 0, height: 2 }, shadowRadius: 8 },
 })
 
 export default Button

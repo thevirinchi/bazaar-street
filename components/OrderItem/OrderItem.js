@@ -50,7 +50,7 @@ const OrderItem = props => {
 }
 
 const styles = StyleSheet.create({
-	orderContainer: { flex: 1, alignItems: "center", justifyContent: "space-evenly", backgroundColor: Colors.whiteLight, elevation: 4, marginBottom: Margin.m, paddingHorizontal: Padding.xl, paddingVertical: Padding.l },
+	orderContainer: { flex: 1, alignItems: "center", justifyContent: "space-evenly", backgroundColor: Colors.whiteLight, elevation: 4, shadowColor: Colors.black, shadowOpacity: 0.25, shadowOffset: { width: 0, height: 4 }, shadowRadius: 8, marginBottom: Margin.m, paddingHorizontal: Padding.xl, paddingVertical: Padding.l },
 	orderDetailsContainer: { width: "100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingBottom: Padding.l },
 	noMarginVertical: { marginVertical: 0 },
 	actionContainer: { width: "100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingBottom: Padding.s },
