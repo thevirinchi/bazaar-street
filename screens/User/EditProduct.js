@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import Root from '../../components/Views/Root'
@@ -24,7 +24,24 @@ const EditProduct = props => {
 
 	const onSubHandler = () => {
 		if (pid) {
-			dispatch(productActions.updateProduct(pid, (name ? name : prod.name), (desc ? desc : prod.desc), (imageURL ? imageURL : prod.imageURL)))
+			Alert.alert(
+				'Are you sure?',
+				'Do you really want to update the item?',
+				[
+					{
+						text: 'No',
+						style: 'cencel'
+					},
+					{
+						text: 'Yes, Update item',
+						style: 'default',
+						onPress: () => {
+							dispatch(productActions.updateProduct(pid, (name ? name : prod.name), (desc ? desc : prod.desc), (imageURL ? imageURL : prod.imageURL)))
+							props.navigation.pop()
+						}
+					}
+				]
+			)
 		}
 		else {
 			dispatch(productActions.createProduct(name, desc, imageURL, price))
@@ -49,7 +66,7 @@ const EditProduct = props => {
 				</View>
 				<View style={styles.buttonContainer}>
 					<TouchableOpacity onPress={onSubHandler}>
-						<Button lvl={1} text="Add" />
+						<Button lvl={1} text="Save" />
 					</TouchableOpacity>
 					<TouchableOpacity onPress={() => { props.navigation.pop() }}>
 						<Button lvl={2} text="cancel" />

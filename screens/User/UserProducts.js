@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList, StyleSheet } from 'react-native'
+import { View, Text, FlatList, StyleSheet, Alert } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
@@ -20,7 +20,25 @@ const UserProducts = props => {
 		return (
 			<Product
 				onEditHandler={() => { props.navigation.navigate('EditProduct', { productId: itemData.item.id, title: itemData.item.name }) }}
-				onDeleteHandler={() => { dispatch(productActions.deleteProduct(itemData.item.id)) }}
+				onDeleteHandler={() => {
+					Alert.alert(
+						'Are you sure?',
+						'Do you really want to delete this item ? You won\'t be able to retrieve the data later on.',
+						[
+							{
+								text: 'No',
+								style: 'cancel'
+							},
+							{
+								text: 'I understand, Delete the item.',
+								style: 'destructive',
+								onPress: () => {
+									dispatch(productActions.deleteProduct(itemData.item.id))
+								}
+							}
+						]
+					)
+				}}
 				id={itemData.item.id}
 				uid={itemData.item.uid}
 				name={itemData.item.name}
