@@ -71,7 +71,7 @@ const Cart = props => {
 }
 
 const styles = StyleSheet.create({
-	emptyContainer: { flex: 1, alignItems: "center", justifyContent: "center" },
+	emptyContainer: { flex: 1, alignItems: "center", justifyContent: "center", padding: Padding.l },
 	cartContainer: { flex: 1 },
 	ctaContainer: { height: Dimensions.get("window").height / 15, flexDirection: "row", width: "100%", backgroundColor: Colors.primary, elevation: 4, position: "absolute", bottom: 0, paddingHorizontal: Padding.l, paddingVertical: Padding.m, alignItems: "center", justifyContent: "space-between" },
 	totalContainer: { flexDirection: "row", alignItems: "flex-start", justifyContent: "center" },
