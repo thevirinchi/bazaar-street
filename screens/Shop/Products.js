@@ -38,8 +38,8 @@ const Products = props => {
 
 Products.navigationOptions = navData => {
 	return {
-		headerLeft: () => <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-menu' onPress={() => { console.log("drawer") }} /></HeaderButtons>,
-		headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-cart' onPress={() => { navData.navigation.navigate('Cart') }} /></HeaderButtons>
+		headerLeft: () => <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Menu" iconName='ios-menu' onPress={() => { navData.navigation.toggleDrawer() }} /></HeaderButtons>,
+		headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderNavButton}><Item title="Cart" iconName='ios-cart' onPress={() => { navData.navigation.navigate('Cart') }} /></HeaderButtons>
 	}
 }
 

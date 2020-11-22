@@ -1,4 +1,5 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/cart'
+import { ADD_ORDER } from '../actions/orders'
 import CartItem from '../../models/CartItem'
 import { add } from 'react-native-reanimated'
 
@@ -58,6 +59,8 @@ const cartReducer = (state = initState, actions) => {
 					totalAmount: state.totalAmount - state.items[actions.pid].price
 				}
 			}
+		case ADD_ORDER:
+			return initState
 		default:
 			break;
 	}

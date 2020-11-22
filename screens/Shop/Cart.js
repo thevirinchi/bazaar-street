@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Dimensions } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import CartItem from '../../components/CartItem/CartItem'
 import Body from '../../components/Typo/Body'
@@ -11,7 +11,11 @@ import Button from '../../components/Button/Button'
 import { Colors } from '../../constants/colors'
 import { Padding } from '../../constants/utility'
 
+import * as orderActions from '../../store/actions/orders'
+
 const Cart = props => {
+
+	const dispatch = useDispatch()
 
 	const total = useSelector(state => state.cart.totalAmount)
 
@@ -39,6 +43,7 @@ const Cart = props => {
 				id={itemData.item.id}
 				quantity={itemData.item.quantity}
 				price={itemData.item.sum}
+				editable={true}
 			/>
 		)
 	}
@@ -56,7 +61,9 @@ const Cart = props => {
 				</View>
 				<View style={styles.ctaContainer}>
 					<View style={styles.totalContainer}><Body lvl={1} text="Total: " style={styles.totalHeader} /><Body lvl={4} text={"₹" + total.toFixed(2)} style={styles.totalAmount} /></View>
-					<Button lvl={2} text="Order now" />
+					<TouchableOpacity onPress={() => { dispatch(orderActions.addOrder(cartItems, total)) }}>
+						<Button lvl={2} text="Order now" />
+					</TouchableOpacity>
 				</View>
 			</View>
 		)
@@ -64,7 +71,7 @@ const Cart = props => {
 }
 
 const styles = StyleSheet.create({
-	emptyContainer: { flex: 1, alignItems: "center", justifyContent: "center" },
+	emptyContainer: { flex: 1, alignItems: "center", justifyContent: "center", padding: Padding.l },
 	cartContainer: { flex: 1 },
 	ctaContainer: { height: Dimensions.get("window").height / 15, flexDirection: "row", width: "100%", backgroundColor: Colors.primary, elevation: 4, position: "absolute", bottom: 0, paddingHorizontal: Padding.l, paddingVertical: Padding.m, alignItems: "center", justifyContent: "space-between" },
 	totalContainer: { flexDirection: "row", alignItems: "flex-start", justifyContent: "center" },

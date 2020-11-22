@@ -25,9 +25,15 @@ const CartItem = props => {
 					<View style={styles.priceContainer}><Body lvl={1} text="Total: " style={styles.priceHeader} /><Body lvl={4} text={"₹" + props.price.toFixed(2)} style={styles.priceAmount} /></View>
 				</View>
 			</View>
-			<TouchableOpacity style={styles.deleteContainer} onPress={() => { dispatch(cartActions.removeFromCart(product.id)) }}>
-				<Ionicons name="ios-trash" size={24} color={Colors.secondary} />
-			</TouchableOpacity>
+			
+			{props.editable
+				? 
+					<TouchableOpacity style={styles.deleteContainer} onPress={() => { dispatch(cartActions.removeFromCart(product.id)) }}>
+						<Ionicons name="ios-trash" size={24} color={Colors.secondary} />
+					</TouchableOpacity>
+				:
+					<View></View>
+			}
 		</View>
 	)
 }
