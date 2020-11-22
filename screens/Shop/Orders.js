@@ -8,9 +8,14 @@ import Root from '../../components/Views/Root'
 import HeaderNavButton from '../../components/Header/Button'
 import OrderItem from '../../components/OrderItem/OrderItem'
 
+import Body from '../../components/Typo/Body'
+import { Padding } from '../../constants/utility'
+
 const Orders = props => {
 
 	const orders = useSelector(state => state.orders.orders)
+
+	console.log(orders)
 
 	const renderItem = itemData => {
 		console.log(itemData)
@@ -25,12 +30,19 @@ const Orders = props => {
 	}
 
 	return (
-		<FlatList numColumns={1} data={orders} keyExtractor={item => item.id} renderItem={renderItem}/>
+		(orders.length!==0
+			?
+				<FlatList numColumns={1} data={orders} keyExtractor={item => item.id} renderItem={renderItem}/>
+			:
+				<View style={styles.emptyContainer}>
+					<Body lvl={1} text="You have not bought something till now. Your orders will appear here." />
+				</View>
+		)	
 	)
 }
 
 const styles = StyleSheet.create({
-
+	emptyContainer: { flex: 1, alignItems: "center", justifyContent: "center", padding: Padding.l },
 })
 
 Orders.navigationOptions = navData => {
